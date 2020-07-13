@@ -1,0 +1,17 @@
+{% extends 'base.html' %}     
+
+{% block content %}
+  {% if except %}
+    <script>alert('Busca não encontrada ;(');</script>
+  {% endif %}
+  {% for post in posts %}
+    <div class="blog-post">
+      <h2 class="blog-post-title">{{post.titulo}}</h2>
+      <p class="blog-post-meta">{{post.dt_postagem_formatado}} por <a style="color: #fa7f72;"href="#">{{post.autor.apelido}}</a>
+      &nbsp;&bull; {{post.assuntos}}
+      &nbsp;&bull; {{post.tempo_de_leitura}}
+      </p>
+      {{post.conteudo|safe}}
+    </div>
+  {% endfor %}
+{% endblock %}

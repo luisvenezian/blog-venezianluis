@@ -1,0 +1,37 @@
+{% extends 'base.html' %}     
+{% load static %} 
+{% block content %}
+
+    {% if resultado == "success" %}
+        <script>alert('Email cadastrado com sucesso, obrigado!')</script>
+    {% elif resultado == "exception" %}
+        {% if situacao == "descon"%}
+        <script>alert('Erro desconhecido!')</script>
+        {% else %}
+        <script>alert('Seu e-mail já está cadastrado!')</script>
+        {% endif %}
+    {% endif %}
+  
+    
+    <h2> Cadastro de Newsletter </h2>
+    <hr>
+    <img src="{% static 'blog/newsletter.gif' %}" class="img-thumbnail" alt="Cinque Terre" width="200" height="140"> 
+    <hr>
+    <p>Antes de tudo, quero agradece-la ou agradece-lo pelo interesse em receber nossas notícias também por e-mail, irei enviar-lhe o melhor conteúdo possível.<p/>
+    <p>Ao submeter o formulário abaixo com seu e-mail e nome já estara tudo pronto.</p>
+    <form action="{%url 'blog:assinatura' %}" method="POST">{% csrf_token %}
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input required type="text" class="form-control" id="nome" name ="nome" aria-describedby="nome" placeholder="Insira seu nome">
+        <small id="nomeajuda" class="form-text text-muted">Se preferir pode ser seu apelido. ;)</small>
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input required type="email" class="form-control" id="email" name = "email" aria-describedby="emailajuda" placeholder="Insira seu e-mail">
+        <small id="emailajuda" class="form-text text-muted">Nós nunca iremos compartilhar seu e-mail com outra pessoa.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar-me</button>
+    </form>
+    <br>
+    <br>
+{% endblock %}
