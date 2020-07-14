@@ -10,6 +10,13 @@ class Autor(models.Model):
     senha = models.CharField(max_length=32)
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
+    email = models.TextField(max_length=200)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields = ['email'], name = 'unique_email_autor'),
+            models.UniqueConstraint(fields = ['usuario'], name = 'unique_usuario_autor')
+        ]
 
     def __str__(self):
         return self.nome
