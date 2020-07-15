@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap'); 
+
 /* stylelint-disable selector-list-comma-newline-after */
+html {
+  font-family: "Noto Sans JP", sans-serif;
+}
 
 .blog-header {
     line-height: 1;
-    border-bottom: 1px solid #fa7f72;
+    border-bottom: 1px solid #8b00db;
   }
   
   .blog-header-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-    font-size: 2.25rem;
+    font-family: "Noto Sans JP", sans-serif;;
+    font-size: 4.25rem;
   }
   
   .blog-header-logo:hover {
@@ -15,7 +20,11 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+
+  p{
+    font-family: "Noto Sans JP", sans-serif;
   }
   
   .display-4 {
@@ -41,7 +50,7 @@
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     padding-bottom: 1rem;
-    margin-top: -1px;
+    margin-top: -4px;
     overflow-x: auto;
     text-align: center;
     white-space: nowrap;
@@ -127,8 +136,27 @@
     background-color: #f9f9f9;
     border-top: .05rem solid #f9f9f9;
   }
+
   .blog-footer p:last-child {
     margin-bottom: 0;
   }
 
-  body {background-color: #343a40;}
+  body {background-color: #101113;}
+
+  .assuntos{
+    background-color: #1f2024;
+    font-family: "Noto Sans JP", sans-serif;
+    text-decoration: none;
+  }
+  .assunto{
+    color:rgb(139, 0, 219);
+    text-decoration: none;   
+  }
+  .assunto:hover{
+    color: #e7eb12;
+    border-radius: 5px;
+    text-decoration: none;   
+  }
+
+  .row { margin: 0; padding: 0 }
+
