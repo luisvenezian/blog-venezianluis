@@ -48,3 +48,17 @@ def assinatura(request):
             retorno.update({"resultado": "exception"})
 
     return render(request, "assinatura.html", retorno)
+
+def login(request):
+    
+    if request.method == 'POST':
+        us = request.POST.get('nome')
+        pw = request.POST.get('senha')
+        autor = Autor.objects.filter(usuario  = us).filter(senha = pw).first() 
+        
+        if us == autor.usuario:
+            # Se entrou aqui está logado com sucesso!
+            a = 1
+
+
+    return render(request, "login.html")

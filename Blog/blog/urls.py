@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.home_page),
     path('cv/', views.cv),
     path('assinatura/', views.assinatura, name = 'assinatura'),
-    path('menu/<str:assunto>', views.home_page, name = 'menu')
+    path('menu/<str:assunto>', views.home_page, name = 'menu'),
+    path('login/', views.login, name = 'login')
 ]
