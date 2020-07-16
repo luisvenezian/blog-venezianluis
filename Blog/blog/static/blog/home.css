@@ -40,7 +40,7 @@ html {
   .nav-scroller {
     position: relative;
     z-index: 2;
-    height: 2.75rem;
+  
     overflow-y: hidden;
   }
   
@@ -51,7 +51,7 @@ html {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     padding-bottom: 1rem;
-    margin-top: -4px;
+    margin-top: -1px;
     overflow-x: auto;
     text-align: center;
     white-space: nowrap;
@@ -153,10 +153,14 @@ html {
     color: #007bff;
     text-decoration: none;
   }
+  .assunto{
+    transition: all .3s;
+  }
   .assunto:hover{
-    color: #154d8a;
-    border-radius: 5px;
+    color: yellowgreen;
+    border-radius: 15px;
     text-decoration: none;   
+    background-color: #154d8a;
   }
 
   .row { margin: 0; padding: 0 }

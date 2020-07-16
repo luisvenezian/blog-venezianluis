@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+
 from .models import Post, Autor, Assunto, Assinatura
 from django import forms
 
@@ -52,13 +53,14 @@ def assinatura(request):
 def login(request):
     
     if request.method == 'POST':
-        us = request.POST.get('nome')
-        pw = request.POST.get('senha')
-        autor = Autor.objects.filter(usuario  = us).filter(senha = pw).first() 
-        
-        if us == autor.usuario:
-            # Se entrou aqui está logado com sucesso!
-            a = 1
-
-
-    return render(request, "login.html")
+        try:
+            a = Autor.objects.filter(usuario = request.POST.get('usuario')).first()
+            if a.senha == request.POST.get('senha'):
+                request.session['autor_id'] = a.id
+                return redirect('/')
+            else:
+                return HttpResponse("Senha incorreta!")
+        except:
+            return HttpResponse("Erro ao logar-se")
+    else:
+        return render(request, "login.html")
