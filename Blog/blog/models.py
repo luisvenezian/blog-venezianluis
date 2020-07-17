@@ -1,5 +1,6 @@
 from django.db import models
 from readtime import of_html
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 # Criei toda essa merda no SQL pra descobrir isso só depois...
@@ -36,7 +37,7 @@ class Assunto(models.Model):
 class Post(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
-    conteudo = models.TextField()
+    conteudo = RichTextField(blank = True, null = True)
     assunto = models.ManyToManyField(Assunto)
     dt_postagem = models.DateTimeField(auto_now=True, auto_now_add=False)
     

@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 
 from .models import Post, Autor, Assunto, Assinatura
 from django import forms
+from .forms import PostForm
 
 # Create your views here.
 def home_page(request, assunto = False):
@@ -21,8 +22,10 @@ def home_page(request, assunto = False):
 
     return render(request, "home.html", dados)
 
+
 def cv(request):
     return HttpResponse('Curriculum Vitae')
+
 
 def assinatura(request):
 
@@ -50,6 +53,7 @@ def assinatura(request):
 
     return render(request, "assinatura.html", retorno)
 
+
 def login(request):
     
     if request.method == 'POST':
@@ -64,3 +68,19 @@ def login(request):
             return HttpResponse("Erro ao logar-se")
     else:
         return render(request, "login.html")
+
+
+def logout(request):
+    if 'autor_id' in request.session:
+        del request.session['autor_id']
+    
+    return redirect('/')
+
+
+def escrever(request):
+    if 'autor_id' not in request.session:
+        return redirect('/')
+
+    form = PostForm() 
+    context = {'form': form}
+    return render(request, "escrever.html", context)
