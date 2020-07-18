@@ -26,14 +26,22 @@
     <!-- CABEÇALHO 1. ANTES DA LOGO -->
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar px-0">
       <div class="container flex-wrap flex-md-nowrap py-0 px-3">
+        <ul class="navbar-nav d-navbar-nav flex-row">
+          <li class="nav-item">
+            <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}" target="_blank" rel="noopener" aria-label="GitHub">
+              &nbsp;&#x1F93A; Entrar
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="text-dark nav-link p-2" href="{% url 'blog:escrever'%}" target="_blank" rel="noopener" aria-label="GitHub">
+              &nbsp;&#x1F4DD; Escrever
+            </a>
+          </li>
+        </ul>
         <ul class="navbar-nav ml-sm-auto">
           <li class="nav-item">
             <a class="nav-link p-2" href="https://github.com/venezianluis/caralavada" target="_blank" rel="noopener" aria-label="GitHub">
-              <img style="filter: drop-shadow( 0 1px .5px grey);"
-              src="{%static 'blog/github-logo-br.svg'%}"
-              alt="Logo do git hub com as cores do Brasil"
-              height="36"
-              width="36" />
+              <!-- AQUI VAI O PESQUISAR -->>
             </a>
           </li>
         </ul>
@@ -46,8 +54,13 @@
       <div class="blog-header py-5">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-12 text-center">
+            <img style="float:center;" title="Escrever"
+              src="{%static 'blog/pena-escrever.svg'%}"
+              alt="logotipo"
+              height="170"
+              width="100"/>
             <a class="blog-header-logo text-dark" href="/">Cara Lavada</a>
-            <p><small class="text-muted">Desenvolvimento, Música e Política</small></p>
+            <p><small class="text-muted">Aqui residem os gatos sobriventes a curiosidade.</small></p>
           </div>
         </div>
       </div>
@@ -71,9 +84,7 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8 blog-main">
-            <h3 class="pb-3 mb-4 font-italic border-bottom">
-              Restrito a pessoas curiosas.
-            </h3>
+            <h3 class="pb-3 mb-4 font-italic border-bottom"></h3>
             <!-- Publicações, parte principal -->
             {% block content %}
             {% endblock %}
