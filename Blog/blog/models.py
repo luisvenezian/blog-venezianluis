@@ -12,6 +12,7 @@ class Autor(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
     email = models.TextField(max_length=200)
+    pic = models.ImageField(upload_to = 'static/blog/pic_folder/', default = 'static/blog/pic_folder/None/no-img.jpg')
 
     class Meta:
         constraints = [

@@ -17,9 +17,9 @@ class PostForm(forms.ModelForm):
                     'class' : 'form-control'
                 }
             ),
-            'assunto' : forms.Select(
+            'assunto' : forms.CheckboxSelectMultiple(
                 attrs = {
-                    'class' : 'form-control'
+                    #'class' : 'form-control'
                 }
             )
         }

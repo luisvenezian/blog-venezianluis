@@ -88,13 +88,20 @@ def escrever(request):
         if form.is_valid():
             p = Post()
             p.titulo = form.cleaned_data['titulo']
-            p.assunto = form.cleaned_data['assunto']
             p.conteudo = form.cleaned_data['conteudo']
-            p.autor = request.session['autor_id']
+            p.autor = Autor.objects.get(id = request.session['autor_id'])   
             p.save()
-            return HttpResponse('Entrou aqui porra!')
+
+            assunto = form.cleaned_data['assunto']
+            for a in assunto:
+                p.assunto.add(Assunto.objects.filter(assunto = a).first())
+            # p.assunto.add(Assunto.objects.get(id=form.cleaned_data['assunto']))
+            return redirect('/')
         else:
-            p = PostForm()
+            return HttpResponse(form.errors)
     
-    context = {'form': form}
+    p = PostForm()    
+    context = {'form': p}
     return render(request, "escrever.html", context)
+
+    p.assunto.add(Assunto.objects.get(id=1))

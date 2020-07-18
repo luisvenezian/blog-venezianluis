@@ -7,10 +7,12 @@
   {% for post in posts %}
     <div class="blog-post">
       <h2 class="blog-post-title">{{post.titulo}}</h2>
-      <p class="blog-post-meta">{{post.dt_postagem_formatado}} por <a style="color: #fa7f72;"href="#">{{post.autor.apelido}}</a>
-      &nbsp;&bull; {{post.assuntos}}
-      &nbsp;&bull; {{post.tempo_de_leitura}}
-      </p>
+        <br>
+        <img style="float:left;"src="{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="60" height="60">
+        <p style="line-height:60px;"class="blog-post-meta">&nbsp&nbsp{{post.dt_postagem_formatado}} por <a style="color: #fa7f72;"href="#">{{post.autor.apelido}}</a>
+        &nbsp;&bull; {{post.assuntos}}
+        &nbsp;&bull; {{post.tempo_de_leitura}}
+        </p>
       {{post.conteudo|safe}}
     </div>
   {% endfor %}
