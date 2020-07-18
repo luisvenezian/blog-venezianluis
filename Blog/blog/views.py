@@ -3,6 +3,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import Post, Autor, Assunto, Assinatura
 from django import forms
 from .forms import PostForm
+from django.contrib import messages 
+
 
 # Create your views here.
 def home_page(request, assunto = False):
@@ -81,6 +83,18 @@ def escrever(request):
     if 'autor_id' not in request.session:
         return redirect('/')
 
-    form = PostForm() 
+    if request.method == "POST":    
+        form = PostForm(request.POST)
+        if form.is_valid():
+            p = Post()
+            p.titulo = form.cleaned_data['titulo']
+            p.assunto = form.cleaned_data['assunto']
+            p.conteudo = form.cleaned_data['conteudo']
+            p.autor = request.session['autor_id']
+            p.save()
+            return HttpResponse('Entrou aqui porra!')
+        else:
+            p = PostForm()
+    
     context = {'form': form}
     return render(request, "escrever.html", context)

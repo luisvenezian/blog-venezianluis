@@ -4,16 +4,14 @@ from .models import Post
 
 
 class PostForm(forms.ModelForm):
-    
+    #assuntos = Assunto.objects.all()
+    #assunto = forms.ModelChoiceField(queryset=assuntos, empty_label="Assunto", required=True)
+    #assunto = forms.ChoiceField(choices=[('0', '--Selecione--')]+    [(assunto.id, assunto.assunto) for assunto in Assunto.objects.all()])
+
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['titulo', 'assunto', 'conteudo']
         widgets = {
-            'autor' : forms.Select(
-                attrs = {
-                    'class' : 'form-control'
-                }
-            ),
             'titulo' : forms.TextInput(
                 attrs = {
                     'class' : 'form-control'
