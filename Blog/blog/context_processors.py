@@ -21,3 +21,6 @@ def menu(request):
         menu.append(item.assunto)
 
     return {"menu": menu}
+
+def autenticado(request):
+    return {"autenticado" : True if 'autor_id' in request.session else False}

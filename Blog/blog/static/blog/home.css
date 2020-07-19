@@ -165,11 +165,11 @@ html {
 .btn {
 	 cursor: pointer;
 	 position: relative;
-	 padding: 10px 10px;
+	 padding: 3px 3px;
 	 background: white;
-	 font-size: 25px;
-	 border-top-right-radius: 10px;
-	 border-bottom-left-radius: 10px;
+	 font-size: 14px;
+	 border-top-right-radius: 0px;
+	 border-bottom-left-radius: 0px;
 	 transition: all 0.3s;
 }
  .btn:after, .btn:before {
@@ -183,14 +183,14 @@ html {
  .btn:after {
 	 top: -1px;
 	 left: -1px;
-	 border-top: 5px solid #52AD4E;
-	 border-left: 5px solid #52AD4E;
+	 border-top: 3px solid #52AD4E;
+	 border-left: 3px solid #52AD4E;
 }
  .btn:before {
 	 bottom: -1px;
 	 right: -1px;
-	 border-bottom: 5px solid #174082;
-	 border-right: 5px solid #174082;
+	 border-bottom: 3px solid #174082;
+	 border-right: 3px solid #174082;
 }
  .btn:hover {
 	 border-top-right-radius: 0px;
@@ -206,3 +206,33 @@ html {
   .bd-navbar{
     background-color: white;
   }
+
+
+/*** DROPDOWN DO BOTÃO ASSUNTOS ***/
+.dropbtn {
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: white;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: white;}

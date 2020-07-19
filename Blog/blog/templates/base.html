@@ -27,57 +27,45 @@
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar px-0">
       <div class="container flex-wrap flex-md-nowrap py-0 px-3">
         <ul class="navbar-nav d-navbar-nav flex-row">
+          
           <li class="nav-item">
-            <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}" target="_blank" rel="noopener" aria-label="GitHub">
-              &nbsp;&#x1F93A; Entrar
+            <a class="text-dark nav-link p-2" href="{% url 'blog:escrever'%}">
+              &nbsp;&#x1F4DD; Escrever
             </a>
           </li>
           <li class="nav-item">
-            <a class="text-dark nav-link p-2" href="{% url 'blog:escrever'%}" target="_blank" rel="noopener" aria-label="GitHub">
-              &nbsp;&#x1F4DD; Escrever
-            </a>
+              <div class="dropdown nav-link p-2">
+              <button class="dropbtn">&nbsp;&#x1F4AC; Assuntos</button>
+              <div class="dropdown-content">
+                {% for assunto in menu %}
+                  <a class="assunto p-2" href="{% url 'blog:menu' assunto|lower %}">
+                    <span class="btn">{{assunto}}</span>
+                  </a>
+                {% endfor %}               
+              </div>
+            </div>
           </li>
         </ul>
         <ul class="navbar-nav ml-sm-auto">
           <li class="nav-item">
             <a class="nav-link p-2" href="https://github.com/venezianluis/caralavada" target="_blank" rel="noopener" aria-label="GitHub">
               <!-- AQUI VAI O PESQUISAR -->>
+              <li class="nav-item">
+                {% if not autenticado %}
+                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                  &nbsp;&#x1F93A; Entrar 
+                </a>
+                {% else %}
+                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                  &nbsp;&#x2699; Opções
+                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                {% endif %}
+              </li>
             </a>
           </li>
         </ul>
       </div>
     </header>
-    <!-- FIM CABEÇALHO 1. ANTES DA LOGO -->
-
-    <!-- CABEÇALHO 2. LOGO E MENUS -->
-    <div class="container-fluid bg-white">
-      <div class="blog-header py-5">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-12 text-center">
-            <img style="float:center;" title="Escrever"
-              src="{%static 'blog/pena-escrever.svg'%}"
-              alt="logotipo"
-              height="170"
-              width="100"/>
-            <a class="blog-header-logo text-dark" href="/">Cara Lavada</a>
-            <p><small class="text-muted">Aqui residem os gatos sobriventes a curiosidade.</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="nav-scroller">
-        <nav class="nav d-flex justify-content-between assuntos">
-            {% for assunto in menu %}
-              <a class="assunto p-3" href="{% url 'blog:menu' assunto|lower %}">
-                <span class="btn">{{assunto}}</span>
-              </a>
-            {% endfor %}
-          <a class="p-3" href="#">
-            <span class="btn">Sobre o "autor"</span>
-          </a>
-        </nav>
-      </div>
-    </div>
-    <!-- FIM CABEÇALHO 2. LOGO E MENUS -->
 
     <!-- LAYOUT LATERAL -->
     <div class="container text-dark bg-white">
@@ -93,12 +81,24 @@
         
           <aside class="col-md-4 blog-sidebar">
             <div class="p-3 mb-3 bg-white rounded">
-              <h4 class="font-italic">Sobre</h4>
+              <a class="text-dark nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
+                <img style="float:center;" title="Escrever"
+                src="{%static 'blog/pena-escrever.svg'%}"
+                alt="logotipo"
+                height="60"
+                width="40"/>
+              </a>
               <p class="text-dark">Ideias e assuntos avançados demais para serem descutidos em redes sociais, eles ainda não estão preparados para isso e não vão aceitar. </p>
             </div>
 
             <div class="p-3">
-              <h4 title="O destino escreveu..." class="font-italic">Linha do Tempo</h4>
+              <a class="text-dark nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
+                <img style="float:center;" title="Escrever"
+                src="{%static 'blog/calendario.svg'%}"
+                alt="logotipo"
+                height="60"
+                width="40"/>
+              </a>
               <ol class="list-unstyled mb-0">
               {% for data in linha_do_tempo %}
                 <li><a class="text-dark" href="#">{{data}}</a></li>
@@ -109,7 +109,7 @@
             <div class="p-3">
               <h4 class="font-italic">Outros</h4>
               <ol class="list-unstyled">
-                <li><a class="text-dark" href="#">Outro</a></li>
+                <li><a class="text-dark" href="#">GitHub</a></li>
               </ol>
             </div>
           </aside><!-- /.blog-sidebar -->

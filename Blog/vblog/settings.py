@@ -67,7 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.context_processors.linha_do_tempo',
-                'blog.context_processors.menu'
+                'blog.context_processors.menu',
+                'blog.context_processors.autenticado'
             ],
         },
     },
