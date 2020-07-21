@@ -7,7 +7,7 @@
     <meta name="description" content="Noticiario de qualidade">
     <meta name="author" content="Luis Felipe Antunes Venezian">
 
-    <title>Cara Lavada</title>
+    <title>Você Diz</title>
 
     <!-- CSS only -->
     <link href="{% static 'blog/bootstrap.css' %}" rel="stylesheet">
@@ -29,22 +29,23 @@
         <ul class="navbar-nav d-navbar-nav flex-row">
           
           <li class="nav-item">
-            <a class="text-dark nav-link p-2" href="{% url 'blog:escrever'%}">
-              &nbsp;&#x1F4DD; Escrever
+            <a class="nav-link p-2" href="{% url 'blog:escrever'%}">
+              <div class="item-menu">&nbsp;&#x1F4DD; Escrever</div>
             </a>
           </li>
           <li class="nav-item">
               <div class="dropdown nav-link p-2">
-              <button class="dropbtn">&nbsp;&#x1F4AC; Assuntos</button>
+              <div class="dropbtn item-menu">&nbsp;&#x1F4AC; Assuntos</div>
               <div class="dropdown-content">
                 {% for assunto in menu %}
-                  <a class="assunto p-2" href="{% url 'blog:menu' assunto|lower %}">
+                  <a class="" href="{% url 'blog:menu' assunto|lower %}">
                     <span class="btn">{{assunto}}</span>
                   </a>
                 {% endfor %}               
               </div>
             </div>
           </li>
+
         </ul>
         <ul class="navbar-nav ml-sm-auto">
           <li class="nav-item">
@@ -52,13 +53,13 @@
               <!-- AQUI VAI O PESQUISAR -->>
               <li class="nav-item">
                 {% if not autenticado %}
-                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                <a class="nav-link item-menu" href="{% url 'blog:login'%}">
                   &nbsp;&#x1F93A; Entrar 
                 </a>
                 {% else %}
-                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                <a class="nav-link item-menu" href="{% url 'blog:login'%}">
                   &nbsp;&#x2699; Opções
-                <a class="text-dark nav-link p-2" href="{% url 'blog:login'%}">
+                </a>
                 {% endif %}
               </li>
             </a>
@@ -68,7 +69,7 @@
     </header>
 
     <!-- LAYOUT LATERAL -->
-    <div class="container text-dark bg-white">
+    <div class="container">
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8 blog-main">
@@ -80,19 +81,19 @@
           </div><!-- /.blog-main -->
         
           <aside class="col-md-4 blog-sidebar">
-            <div class="p-3 mb-3 bg-white rounded">
-              <a class="text-dark nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
+            <div class="p-3 mb-3  rounded">
+              <a class=" nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
                 <img style="float:center;" title="Escrever"
                 src="{%static 'blog/pena-escrever.svg'%}"
                 alt="logotipo"
                 height="60"
                 width="40"/>
               </a>
-              <p class="text-dark">Ideias e assuntos avançados demais para serem descutidos em redes sociais, eles ainda não estão preparados para isso e não vão aceitar. </p>
+              <p class="">Ideias e assuntos avançados demais para serem descutidos em redes sociais, eles ainda não estão preparados para isso e não vão aceitar. </p>
             </div>
 
             <div class="p-3">
-              <a class="text-dark nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
+              <a class=" nav-link p-2" href="/" target="_blank" rel="noopener" aria-label="GitHub">
                 <img style="float:center;" title="Escrever"
                 src="{%static 'blog/calendario.svg'%}"
                 alt="logotipo"
@@ -101,7 +102,7 @@
               </a>
               <ol class="list-unstyled mb-0">
               {% for data in linha_do_tempo %}
-                <li><a class="text-dark" href="#">{{data}}</a></li>
+                <li><a class="item-menu-lateral" href="#">{{data}}</a></li>
               {% endfor %}
               </ol>
             </div>
@@ -109,14 +110,14 @@
             <div class="p-3">
               <h4 class="font-italic">Outros</h4>
               <ol class="list-unstyled">
-                <li><a class="text-dark" href="#">GitHub</a></li>
+                <li><a class="item-menu-lateral" href="#">GitHub</a></li>
               </ol>
             </div>
           </aside><!-- /.blog-sidebar -->
         </div><!-- /.row -->
       </main><!-- /.container -->
     </div><!-- FIM LAYOUT LATERAL -->
-    <footer class="blog-footer bg-white">
+    <footer class="blog-footer ">
         <p><font title="Boa sorte!">É só isso, acabou.</font>  &nbsp;&bull; 
         <a style="text-decoration: none; color: #999;" href="{%url 'blog:assinatura'%}">Assinar nossa Newsletter!</a> &nbsp;&bull; Ver Dúvidas Frequentes!</p> 
         <p>
