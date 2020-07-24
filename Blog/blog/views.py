@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-
+import json
 from .models import Post, Autor, Assunto, Assinatura
 from django import forms
 from .forms import PostForm
@@ -18,7 +18,6 @@ def home_page(request, assunto = False):
             dados.update({"posts" : dados['posts'].filter(assunto = Assunto.objects.get(assunto__iexact = assunto).id)})
         except:
             dados.update({"except" : True})
-
     if not dados['posts']:
         dados.update({"posts": Post.objects.order_by('-dt_postagem')})
 
@@ -105,3 +104,24 @@ def escrever(request):
     return render(request, "escrever.html", context)
 
     p.assunto.add(Assunto.objects.get(id=1))
+
+def gostar(request):
+
+    if request.is_ajax and request.method == "GET":
+        postid = request.GET.get('postid')
+        p = Post.objects.get(id = postid)
+        a = Autor.objects.get(id = request.session['autor_id']) 
+        data = {
+            "gostaram" : 0,
+            "classe" : ""
+        }
+        if a in p.gostaram.all():
+            p.gostaram.remove(a)
+        else:
+            p.gostaram.add(a)
+            data.update({"gostaram" : p.quantos_gostaram(), "classe" : "gostou"})
+
+        p.save()
+        return HttpResponse(json.dumps(data))
+    else:
+        return HttpResponse('deu pau')

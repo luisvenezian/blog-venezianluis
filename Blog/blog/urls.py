@@ -10,5 +10,6 @@ urlpatterns = [
     path('menu/<str:assunto>', views.home_page, name = 'menu'),
     path('login/', views.login, name = 'login'),
     path('logout/', views.logout, name = 'logout'),
-    path('escrever/', views.escrever, name = 'escrever')
+    path('escrever/', views.escrever, name = 'escrever'),
+    path('gostar/', views.gostar, name = 'gostar')
 ]

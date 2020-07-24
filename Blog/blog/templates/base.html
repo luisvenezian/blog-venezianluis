@@ -13,13 +13,16 @@
     <link href="{% static 'blog/bootstrap.css' %}" rel="stylesheet">
 
     <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="{% static 'blog/bootstrap.js' %}"></script>
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="{% static 'blog/home.css' %}" rel="stylesheet">
+
+    <!-- SCRIPT PARA GOSTAR DOS POSTS-->
+    <script src="{% static "blog/js/ajax-gostar.js" %}"></script>
   </head>
 
   <body>
@@ -27,15 +30,20 @@
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar px-0">
       <div class="container flex-wrap flex-md-nowrap py-0 px-3">
         <ul class="navbar-nav d-navbar-nav flex-row">
-          
+          <li class="nav-item">
+            <a class="nav-link p-2" href="/">
+              <div class="titulo-menu">Você Diz</div>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link p-2" href="{% url 'blog:escrever'%}">
               <div class="item-menu">&nbsp;&#x1F4DD; Escrever</div>
             </a>
           </li>
           <li class="nav-item">
-              <div class="dropdown nav-link p-2">
+            <div class="dropdown nav-link p-2">
               <div class="dropbtn item-menu">&nbsp;&#x1F4AC; Assuntos</div>
+              
               <div class="dropdown-content">
                 {% for assunto in menu %}
                   <a class="" href="{% url 'blog:menu' assunto|lower %}">
@@ -45,25 +53,30 @@
               </div>
             </div>
           </li>
-
-        </ul>
-        <ul class="navbar-nav ml-sm-auto">
+          {% if autenticado %}
           <li class="nav-item">
-            <a class="nav-link p-2" href="https://github.com/venezianluis/caralavada" target="_blank" rel="noopener" aria-label="GitHub">
-              <!-- AQUI VAI O PESQUISAR -->>
-              <li class="nav-item">
-                {% if not autenticado %}
-                <a class="nav-link item-menu" href="{% url 'blog:login'%}">
-                  &nbsp;&#x1F93A; Entrar 
-                </a>
-                {% else %}
-                <a class="nav-link item-menu" href="{% url 'blog:login'%}">
-                  &nbsp;&#x2699; Opções
-                </a>
-                {% endif %}
-              </li>
+            <a class="nav-link p-2" href="{% url 'blog:login'%}">
+              <div class="item-menu">&nbsp;&#x1F93A; Perfil</div>
             </a>
-          </li>
+          <li class="nav-item">
+          {% endif %}   
+          <li class="nav-item">
+            {% if not autenticado %}
+            <a class="nav-link p-2" href="{% url 'blog:login'%}">
+              <div class="item-menu">&nbsp;&#x1F93A; Entrar</div>
+            </a>
+            {% else %}
+            <div class="dropdown nav-link p-2">
+              <div class="dropbtn item-menu">&nbsp;&#x2699; Opções</div>
+              
+              <div class="dropdown-content">
+                  <a class="" href="{% url 'blog:logout' %}">
+                    <span class="btn">Sair</span>
+                  </a>
+              </div>
+            </div>
+            {% endif %}
+          </li>     
         </ul>
       </div>
     </header>

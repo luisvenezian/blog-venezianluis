@@ -1,6 +1,7 @@
 from django.db import models
 from readtime import of_html
 from ckeditor.fields import RichTextField
+from django.shortcuts import render
 
 # Create your models here.
 # Criei toda essa merda no SQL pra descobrir isso só depois...
@@ -35,13 +36,15 @@ class Assunto(models.Model):
             models.UniqueConstraint(fields=['assunto'], name='unique_assunto')
         ]
 
+
 class Post(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     conteudo = RichTextField(blank = True, null = True)
     assunto = models.ManyToManyField(Assunto)
     dt_postagem = models.DateTimeField(auto_now=True, auto_now_add=False)
-    
+    gostaram = models.ManyToManyField(Autor, related_name='post_gostaram')
+
     def __str__(self):
         return self.titulo 
 
@@ -60,8 +63,17 @@ class Post(models.Model):
 
         return assuntos
 
+    def quantos_gostaram(self):
+        return self.gostaram.all().count()
+
     def tempo_de_leitura(self):
         return of_html(self.conteudo).text
+
+    def gostei(self):
+        for autor in self.gostaram.all():
+            if 1 == autor.id :
+                return "gostou" 
+        return ""
 
 class Assinatura(models.Model):
     nome = models.CharField(max_length=200)
@@ -75,3 +87,4 @@ class Assinatura(models.Model):
         constraints = [
             models.UniqueConstraint(fields = ['email'], name = 'unique_email'),
         ]
+
