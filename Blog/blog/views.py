@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 import json
 from .models import Post, Autor, Assunto, Assinatura
 from django import forms
-from .forms import PostForm
+from .forms import PostForm, AutorForm
 from django.contrib import messages 
 
 
@@ -103,7 +103,6 @@ def escrever(request):
     context = {'form': p}
     return render(request, "escrever.html", context)
 
-    p.assunto.add(Assunto.objects.get(id=1))
 
 def gostar(request):
 
@@ -117,6 +116,7 @@ def gostar(request):
         }
         if a in p.gostaram.all():
             p.gostaram.remove(a)
+            data.update({"gostaram" : p.quantos_gostaram()})
         else:
             p.gostaram.add(a)
             data.update({"gostaram" : p.quantos_gostaram(), "classe" : "gostou"})
@@ -125,3 +125,25 @@ def gostar(request):
         return HttpResponse(json.dumps(data))
     else:
         return HttpResponse('deu pau')
+
+
+def cadastro(request):
+
+    if request.method == "POST":    
+        form = AutorForm(request.POST)
+        if form.is_valid():
+            a = Autor()
+            a.nome = form.cleaned_data['nome']
+            a.email = form.cleaned_data['email']
+            a.usuario = form.cleaned_data['usuario'] 
+            a.senha = form.cleaned_data['senha'] 
+            a.apelido = form.cleaned_data['apelido'] 
+            a.save()
+            request.session['autor_id'] = a.id
+            return redirect('/')
+        else:
+            return HttpResponse(form.errors)
+
+    a = AutorForm()    
+    context = {'form': a}
+    return render(request, "cadastro.html", context)

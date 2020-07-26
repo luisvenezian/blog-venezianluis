@@ -23,4 +23,4 @@ def menu(request):
     return {"menu": menu}
 
 def autenticado(request):
-    return {"autenticado" : True if 'autor_id' in request.session else False}
+    return {"autenticado" : request.session['autor_id'] if 'autor_id' in request.session else False}

@@ -70,10 +70,7 @@ class Post(models.Model):
         return of_html(self.conteudo).text
 
     def gostei(self):
-        for autor in self.gostaram.all():
-            if 1 == autor.id :
-                return "gostou" 
-        return ""
+        return self.gostaram.all()
 
 class Assinatura(models.Model):
     nome = models.CharField(max_length=200)

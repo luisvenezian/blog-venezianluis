@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Autor
 # from ckeditor.widgets import CKEditorWidget
 
 
@@ -20,6 +20,38 @@ class PostForm(forms.ModelForm):
             'assunto' : forms.CheckboxSelectMultiple(
                 attrs = {
                     #'class' : 'form-control'
+                }
+            )
+        }
+
+class AutorForm(forms.ModelForm):
+    class Meta:
+        model = Autor
+        fields = ['nome', 'usuario','apelido', 'senha', 'email']
+        widgets = {
+            'nome' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control'
+                }
+            ),
+            'usuario' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control'
+                }
+            ),
+            'apelido' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control'
+                }
+            ),
+            'senha' : forms.PasswordInput(
+                attrs={
+                    'class' : 'form-control'
+                }
+            ),
+            'email' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control'
                 }
             )
         }

@@ -22,7 +22,12 @@
 
         <div class="container mt-3" style="padding-right: 0px; padding-left: 0px">
             <div class="d-flex">
-              <div id ="gostar" class="p-2 item-menu text-center {{post.gostei}}">
+              <div id ="gostar" class="p-2 item-menu text-center 
+              {% for autor in post.gostei %}
+                {% if autenticado == autor.id%}
+                  gostou
+                {% endif %}
+              {% endfor %}">
                 <a class="gostar" id="{{post.id}}" data-postid="{{post.id}}" type="button">&#x1F44D;&nbsp;Gostar</a>
               </div>
               &nbsp;
