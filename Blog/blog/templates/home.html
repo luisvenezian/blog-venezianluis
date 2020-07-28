@@ -8,7 +8,7 @@
     <div class="blog-post">
       <h2 class="blog-post-title">{{post.titulo}}</h2>
         <br>
-        <img style="float:left;"src="{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="60" height="60">
+        <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="60" height="60">
         <p style="line-height:60px;"class="blog-post-meta">&nbsp&nbsp{{post.dt_postagem_formatado}} por <a style="color: #fa7f72;"href="#">{{post.autor.apelido}}</a>
         &nbsp;&bull; {{post.assuntos}}
         &nbsp;&bull; {{post.tempo_de_leitura}}
@@ -21,7 +21,7 @@
         <font id="gostaram" class="blog-post-meta">{{post.quantos_gostaram}}</font><font class="blog-post-meta"> Pessoas gostaram.</font>
 
         <div class="container mt-3" style="padding-right: 0px; padding-left: 0px">
-            <div class="d-flex">
+          <div class="d-flex">
               <div id ="gostar" class="p-2 item-menu text-center 
               {% for autor in post.gostei %}
                 {% if autenticado == autor.id%}
@@ -32,13 +32,39 @@
               </div>
               &nbsp;
               <div class="p-2 item-menu text-center">
-                <a id="" data-postid="{{post.id}}">&#x1F5E3;&nbsp;Falar</a>
+                <a id="btn-comentario" data-postid="{{post.id}}" type="button">&#x1F5E3;&nbsp;Comentários</a>
               </div>
-          </div>
+          </div><!-- FIM LINHA -->
+
+          <div id="comentarios">
+            <div id="comentario1" class="d-flex p-2">
+              <div style="margin-left: 10%;" class="p-2">
+                <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
+              </div>
+              <div class="p-2 comentario"><font style="color: grey; font-size: 10px;">[Jul 27 8:38 PM] &bull;</font> Sinceramente eu achei esse post uma merda, para de passar vergonha na internet assim moleque! </div>
+            </div>    
+
+            <div id="comentario2" class="d-flex p-2">
+              <div style="margin-left: 10%;" class="p-2">
+                <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
+              </div>
+              <div class="p-2 comentario"><font style="color: grey; font-size: 10px;">[Jul 27 8:40 PM] &bull;</font> Brincadeira, rsrs vc é um gênio ;3 </div>
+            </div>   
+
+            <div id="comentario2" class="d-flex p-2">
+              <div style="margin-left: 10%;" class="p-2">
+                <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
+              </div>
+              <div class="p-2 comentario"><input autofocus style="width: 100%; background: transparent; border: none; font-size: 12px; border-bottom: 1px solid grey;"type="text">
+                <a id="btn-enviar-comentario" data-postid="{{post.id}}" class="item-menu" type="button">&#x1F5E3;&nbsp;Enviar</a>
+              </div>
+            </div>
+          </div> <!-- FIM COMENTÁRIOS -->
+
         </div>
 
       </div>
       {% endif %}
-    </div>
+    </div><!-- FIM POST -->
   {% endfor %}
 {% endblock %}

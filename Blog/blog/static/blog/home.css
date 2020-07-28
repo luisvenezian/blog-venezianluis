@@ -61,7 +61,7 @@
    */
 
   .blog-post {
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 4rem;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 24px -9px rgba(68,67,71,0.3);
@@ -98,6 +98,15 @@
   body {
     background-color: #fff;
   }
+/*** BLOG COMENTÁRIO ***/
+.comentario{
+  padding: 7px;
+  color: black !important;
+  font-size: 14px;
+  font-family: 'Merriweather', serif;
+  background-color: whitesmoke;
+  border-radius: 12px;
+}
 
 /*** TITULO ***/
 .titulo-menu{
@@ -183,5 +192,5 @@ table tbody + tbody {
 
 
 .gostou{
-  background-color: rgb(164, 231, 150);
+  background-color: rgb(198, 248, 106);
 }

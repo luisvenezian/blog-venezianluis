@@ -1,43 +1,16 @@
+{% extends 'base.html' %} 
 {% load static %} 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Noticiario de qualidade">
-    <meta name="author" content="Luis Felipe Antunes Venezian">
-
-    <title>Cara Lavada</title>
-
-    <!-- CSS only -->
-    <link href="{% static 'blog/bootstrap.css' %}" rel="stylesheet">
-
-    <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="{% static 'blog/bootstrap.js' %}"></script>
-
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="{% static 'blog/home.css' %}" rel="stylesheet">
-  </head>
-  <body>
-    <!-- LAYOUT LATERAL -->
-    <div class="container text-dark bg-white">
-        <main role="main" class="container">
-            <div class="row">
-              <div class="col-md-10 blog-main">
-                  <img src="{% static 'blog/pena-escrever.svg' %}" alt="icone de escrita" height="250" width="250"/>
-                  <!-- AQUI VAI O FORMULÁRIO -->
-                  <form action="{%url 'blog:escrever' %}" method="POST">{% csrf_token %}
-                    {{ form.media }}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn">Publicar!</button>
-                  </form>
-                  <hr>
-              </div><!-- /.blog-main -->
-            </div><!-- /.row -->
-        </main><!-- /.container -->
-    </div><!-- FIM LAYOUT LATERAL -->
-  </body>
-</html>
+{% block content %}
+  <div class="row">
+    <div class="col-md-10 blog-main">
+        <img src="{% static 'blog/pena-escrever.svg' %}" alt="icone de escrita" height="250" width="250"/>
+        <!-- AQUI VAI O FORMULÁRIO -->
+        <form action="{%url 'blog:escrever' %}" method="POST">{% csrf_token %}
+          {{ form.media }}
+          {{ form.as_p }}
+          <button type="submit" class="item-menu">Publicar!</button> <!-- Essa classe eu tenho que mudar ;(-->
+        </form>
+        <hr>
+    </div><!-- /.blog-main -->
+  </div><!-- /.row -->
+{% endblock %}

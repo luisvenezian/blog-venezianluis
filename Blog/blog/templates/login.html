@@ -1,33 +1,18 @@
+{% extends 'base.html' %} 
 {% load static %} 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Cara Lavada - Entrar</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'blog/bootstrap.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'blog/login.css' %}" rel="stylesheet">
-  </head>
-
-  <body class="text-center">
+{% block content %}
 
     <form class="form-signin" action="{%url 'blog:login' %}" method="POST">{% csrf_token %}
-      <h1 class="h3 mb-3 font-weight-normal">Oi, autor</h1>
+      <h1 class="h3">Oi, autor</h1>
       <label for="inputUsuario" class="sr-only">Email address</label>
       <input name="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuário" required autofocus>
+      <br>
       <label for="inputPassword" class="sr-only">Password</label>
       <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       <p class="mt-5 mb-3 text-muted">Aborde qualquer assunto com inteligência, trabalhe com imparcialidade e então vai ser muito bom poder ler suas histórias.</p>
-      <p class="mt-5 mb-3 text-muted">Não é usuário? <a class="nav-link p-2" href="{% url 'blog:cadastro'%}">Cadastre-se!</a></p>
+      <p class="mt-5 mb-3 text-muted">Não é usuário?</p>
+      <a class="p-2 item-menu" href="{% url 'blog:cadastro'%}">Cadastre-se!</a>
     </form>
-  </body>
-</html>
+{% endblock %}
