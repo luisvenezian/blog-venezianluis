@@ -32,36 +32,21 @@
               </div>
               &nbsp;
               <div class="p-2 item-menu text-center">
-                <a id="btn-comentario" data-postid="{{post.id}}" type="button">&#x1F5E3;&nbsp;Comentários</a>
+                <a id="btn-comentario" data-postid="{{post.id}}" onclick="ver_comentario({{post.id}});" type="button">&#x1F5E3;&nbsp;Comentários</a>
               </div>
           </div><!-- FIM LINHA -->
 
-          <div id="comentarios">
+          <div id="comentarios{{post.id}}">
+            <!--
             <div id="comentario1" class="d-flex p-2">
               <div style="margin-left: 10%;" class="p-2">
                 <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
               </div>
               <div class="p-2 comentario"><font style="color: grey; font-size: 10px;">[Jul 27 8:38 PM] &bull;</font> Sinceramente eu achei esse post uma merda, para de passar vergonha na internet assim moleque! </div>
-            </div>    
-
-            <div id="comentario2" class="d-flex p-2">
-              <div style="margin-left: 10%;" class="p-2">
-                <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
-              </div>
-              <div class="p-2 comentario"><font style="color: grey; font-size: 10px;">[Jul 27 8:40 PM] &bull;</font> Brincadeira, rsrs vc é um gênio ;3 </div>
-            </div>   
-
-            <div id="comentario2" class="d-flex p-2">
-              <div style="margin-left: 10%;" class="p-2">
-                <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
-              </div>
-              <div class="p-2 comentario"><input autofocus style="width: 100%; background: transparent; border: none; font-size: 12px; border-bottom: 1px solid grey;"type="text">
-                <a id="btn-enviar-comentario" data-postid="{{post.id}}" class="item-menu" type="button">&#x1F5E3;&nbsp;Enviar</a>
-              </div>
-            </div>
+            </div>     
+            -->
           </div> <!-- FIM COMENTÁRIOS -->
-
-        </div>
+        </div> <!-- FIM CONTAINER DOS COMENTÁRIOS -->
 
       </div>
       {% endif %}

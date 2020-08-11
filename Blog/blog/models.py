@@ -72,6 +72,15 @@ class Post(models.Model):
     def gostei(self):
         return self.gostaram.all()
 
+class Comentario(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+    comentario = models.CharField(max_length=300)
+    data = models.DateTimeField(auto_now=True, auto_now_add=False)
+    
+    def __str__(self):
+        return self.comentario 
+
 class Assinatura(models.Model):
     nome = models.CharField(max_length=200)
     email = models.CharField(max_length=200)

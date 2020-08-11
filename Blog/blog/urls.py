@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout/', views.logout, name = 'logout'),
     path('cadastro/', views.cadastro, name = 'cadastro'),
     path('escrever/', views.escrever, name = 'escrever'),
-    path('gostar/', views.gostar, name = 'gostar')
+    path('gostar/', views.gostar, name = 'gostar'),
+    path('comentarios/', views.comentarios, name = 'comentarios')
 ]

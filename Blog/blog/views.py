@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 import json
-from .models import Post, Autor, Assunto, Assinatura
+from .models import Post, Autor, Assunto, Assinatura, Comentario
 from django import forms
 from .forms import PostForm, AutorForm
 from django.contrib import messages 
@@ -147,3 +147,21 @@ def cadastro(request):
     a = AutorForm()    
     context = {'form': a}
     return render(request, "cadastro.html", context)
+
+def comentarios(request):
+
+    data = {}
+
+    if request.is_ajax and request.method == "GET":
+        postid = request.GET.get('postid')
+        comentarios = Comentario.objects.filter(post_id = postid) 
+
+        if bool(comentarios):
+            for c in comentarios:
+                data.update({c.id : {"autor" : c.autor.nome, 
+                                    "pic": str(c.autor.pic), 
+                                    "comentario" : c.comentario, 
+                                    "data" : str(c.data)}})
+
+
+    return HttpResponse(json.dumps(data))
