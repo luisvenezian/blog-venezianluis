@@ -31,27 +31,32 @@ class AutorForm(forms.ModelForm):
         widgets = {
             'nome' : forms.TextInput(
                 attrs={
-                    'class' : 'form-control'
+                    'class' : 'form-control',
+                    'placeholder': 'Insira seu nome completo'
                 }
             ),
             'usuario' : forms.TextInput(
                 attrs={
-                    'class' : 'form-control'
+                    'class' : 'form-control',
+                    'placeholder' : 'O usuário será utilizado para logar-se!'
                 }
             ),
             'apelido' : forms.TextInput(
                 attrs={
-                    'class' : 'form-control'
+                    'class' : 'form-control',
+                    'placeholder' : 'Insira como quer ser visto pela comunidade'
                 }
             ),
             'senha' : forms.PasswordInput(
                 attrs={
-                    'class' : 'form-control'
+                    'class' : 'form-control',
+                    'placeholder' : '4S3nham41zD1Fi¢I!D0_ODNUM_'
                 }
             ),
             'email' : forms.TextInput(
                 attrs={
-                    'class' : 'form-control'
+                    'class' : 'form-control',
+                    'placeholder':'Insira um endereço válido'
                 }
             )
         }

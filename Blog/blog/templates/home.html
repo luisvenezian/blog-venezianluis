@@ -46,6 +46,21 @@
             </div>     
             -->
           </div> <!-- FIM COMENTÁRIOS -->
+          <div id="comentar{{post.id}}" style="display:none;">
+            <div id='gravar' class='d-flex p-2'>
+              <div style='' class='p-2'>
+              <img style='float:left;' src='../{{post.autor.pic}}' class='rounded-circle' alt='perfil' width='40' height='40'>
+              </div>
+                <div class='p-2 comentario'>
+                  <textarea autofocus
+                    id="comentario{{post.id}}" 
+                    style='width: 100%; background: transparent; border: none; font-size: 12px; + border-bottom: 1px solid grey;' type='text-area'></textarea>
+                <a id='btn-enviar-comentario' 
+                onclick="comentar({{post.id}});"  class='item-menu' type='button'>&#x1F5E3;&nbsp;Enviar</a>
+              </div>
+            </div>
+          </div> <!-- FIM COMENTAR -->
+
         </div> <!-- FIM CONTAINER DOS COMENTÁRIOS -->
 
       </div>

@@ -13,5 +13,6 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name = 'cadastro'),
     path('escrever/', views.escrever, name = 'escrever'),
     path('gostar/', views.gostar, name = 'gostar'),
-    path('comentarios/', views.comentarios, name = 'comentarios')
-]
+    path('comentarios/', views.comentarios, name = 'comentarios'),
+    path('comentar/', views.comentar, name = 'comentar'),
+]   

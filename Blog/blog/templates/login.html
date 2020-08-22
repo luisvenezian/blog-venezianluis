@@ -3,7 +3,7 @@
 {% block content %}
 
     <form class="form-signin" action="{%url 'blog:login' %}" method="POST">{% csrf_token %}
-      <h1 class="h3">Oi, autor</h1>
+      <h1 class="h2b">&#x270C;&nbsp;Oi, autor</h1>
       <label for="inputUsuario" class="sr-only">Email address</label>
       <input name="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuário" required autofocus>
       <br>
@@ -15,4 +15,5 @@
       <p class="mt-5 mb-3 text-muted">Não é usuário?</p>
       <a class="p-2 item-menu" href="{% url 'blog:cadastro'%}">Cadastre-se!</a>
     </form>
+  <br>
 {% endblock %}

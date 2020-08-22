@@ -165,3 +165,21 @@ def comentarios(request):
 
 
     return HttpResponse(json.dumps(data))
+
+
+def comentar(request):
+    if request.is_ajax and request.method == "POST":
+        post_id = request.POST.get('post_id')
+        comentario = request.POST.get('comentario')
+        autor_id = request.session['autor_id'] 
+        
+        p = Post.objects.get(id = post_id)
+        a = Autor.objects.get(id = autor_id)
+
+        try:    
+            c = Comentario.objects.create(post = p, autor = a, comentario = comentario)
+        except Exception as e:
+            return HttpResponse("Post Id: " + str(post_id) + "\nComentario: " + str(comentario) + "\nAutor Id:" + str(autor_id) + "\nErro: " + str(e))
+
+        return HttpResponse("Comentário registrado com sucesso!")
+        

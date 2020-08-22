@@ -1,8 +1,10 @@
 {% extends 'base.html' %}     
 {% block content %}
+    <h1>&#x1F4DD;&nbsp;Novo autor!</h1>
     <form action="{%url 'blog:cadastro' %}" method="POST">{% csrf_token %}
         {{ form.media }}
         {{ form.as_p }}
-        <button type="submit" class="item-menu">Submitar!</button>
+        <button type="submit" class="item-menu">Cadastrar!</button>
     </form>
+    <br>
 {% endblock %}
