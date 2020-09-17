@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Noticiario de qualidade">
     <meta name="author" content="Luis Felipe Antunes Venezian">
-
-    <title>Você Diz</title>
-
+    <title>@vl ~</title>
     <!-- CSS only -->
     <link href="{% static 'blog/bootstrap.css' %}" rel="stylesheet">
 
@@ -32,18 +30,12 @@
         <ul class="navbar-nav d-navbar-nav flex-row">
           <li class="nav-item">
             <a class="nav-link p-2" href="/">
-              <div class="titulo-menu">Você Diz</div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link p-2" href="{% url 'blog:escrever'%}">
-              <div class="item-menu">&nbsp;&#x1F4DD; Escrever</div>
+              <div class="titulo-menu">@venezianluis</div>
             </a>
           </li>
           <li class="nav-item">
             <div class="dropdown nav-link p-2">
-              <div class="dropbtn item-menu">&nbsp;&#x1F4AC; Assuntos</div>
-              
+              <div class="dropbtn item-menu">&nbsp;&#x1F4AC; Assunto</div>
               <div class="dropdown-content">
                 {% for assunto in menu %}
                   <a class="" href="{% url 'blog:menu' assunto|lower %}">
@@ -55,10 +47,10 @@
           </li>
           {% if autenticado %}
           <li class="nav-item">
-            <a class="nav-link p-2" href="{% url 'blog:login'%}">
-              <div class="item-menu">&nbsp;&#x1F93A; Perfil</div>
+            <a class="nav-link p-2" href="{% url 'blog:escrever'%}">
+              <div class="item-menu">&nbsp;&#x1F4DD; Escrever</div>
             </a>
-          <li class="nav-item">
+          </li>
           {% endif %}   
           <li class="nav-item">
             {% if not autenticado %}
@@ -83,7 +75,7 @@
 
     <!-- LAYOUT LATERAL -->
     <div class="container">
-      <main role="main" class="container">
+      <main role="main">
         <div class="row">
           <div class="col-md-9 blog-main">
             <h3 class="pb-3 mb-4 font-italic border-bottom"></h3>
@@ -102,7 +94,7 @@
                 height="60"
                 width="40"/>
               </a>
-              <p class="">Ideias e assuntos avançados demais para serem descutidos em redes sociais, eles ainda não estão preparados para isso e não vão aceitar. </p>
+              <p class="">Às vezes, a vida vai te acertar um tijolo na cabeça. Não perca a fé.</p>
             </div>
 
             <div class="p-3">
@@ -115,7 +107,7 @@
               </a>
               <ol class="list-unstyled mb-0">
               {% for data in linha_do_tempo %}
-                <li><a class="item-menu-lateral" href="#">{{data}}</a></li>
+                <li><a class="item-menu-lateral" href="{% url 'blog:filtro' data|lower %}">{{data}}</a></li>
               {% endfor %}
               </ol>
             </div>
@@ -123,12 +115,5 @@
         </div><!-- /.row -->
       </main><!-- /.container -->
     </div><!-- FIM LAYOUT LATERAL -->
-    <footer class="blog-footer">
-        <p><font title="Boa sorte!">É só isso, acabou.</font>  &nbsp;&bull; 
-        <a style="text-decoration: none; color: #999;" href="{%url 'blog:assinatura'%}">Newsletter</a></p> 
-        <p>
-          <a href="#" class="text-light">Voltar para cima</a>
-        </p>
-    </footer>
   </body>
 </html>

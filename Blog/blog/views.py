@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 # Create your views here.
-def home_page(request, assunto = False):
+def home_page(request, assunto = False, mes = False):
 
     dados = {
         "posts": Post.objects.order_by('-dt_postagem')
@@ -18,6 +18,12 @@ def home_page(request, assunto = False):
             dados.update({"posts" : dados['posts'].filter(assunto = Assunto.objects.get(assunto__iexact = assunto).id)})
         except:
             dados.update({"except" : True})
+    elif mes:
+        try:
+            dados.update({"posts" : dados['posts'].filter(assunto = Assunto.objects.get(assunto__iexact = assunto).id)})
+        except:
+            dados.update({"except" : True})
+
     if not dados['posts']:
         dados.update({"posts": Post.objects.order_by('-dt_postagem')})
 
@@ -103,7 +109,7 @@ def escrever(request):
     context = {'form': p}
     return render(request, "escrever.html", context)
 
-
+'''
 def gostar(request):
 
     if request.is_ajax and request.method == "GET":
@@ -183,3 +189,4 @@ def comentar(request):
 
         return HttpResponse("Comentário registrado com sucesso!")
         
+'''

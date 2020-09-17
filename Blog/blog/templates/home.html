@@ -16,8 +16,9 @@
       {{post.conteudo|safe}}
 
       {% if autenticado %}
+      <!--
       <div id="{{post.id}}"> 
-
+      
         <font id="gostaram" class="blog-post-meta">{{post.quantos_gostaram}}</font><font class="blog-post-meta"> Pessoas gostaram.</font>
 
         <div class="container mt-3" style="padding-right: 0px; padding-left: 0px">
@@ -30,22 +31,24 @@
               {% endfor %}">
                 <a class="gostar" id="{{post.id}}" data-postid="{{post.id}}" type="button">&#x1F44D;&nbsp;Gostar</a>
               </div>
+            
               &nbsp;
               <div class="p-2 item-menu text-center">
                 <a id="btn-comentario" data-postid="{{post.id}}" onclick="ver_comentario({{post.id}});" type="button">&#x1F5E3;&nbsp;Comentários</a>
               </div>
-          </div><!-- FIM LINHA -->
-
+              
+          </div>
+       
           <div id="comentarios{{post.id}}">
-            <!--
+            
             <div id="comentario1" class="d-flex p-2">
               <div style="margin-left: 10%;" class="p-2">
                 <img style="float:left;"src="../{{post.autor.pic}}" class="rounded-circle" alt="perfil" width="40" height="40">
               </div>
               <div class="p-2 comentario"><font style="color: grey; font-size: 10px;">[Jul 27 8:38 PM] &bull;</font> Sinceramente eu achei esse post uma merda, para de passar vergonha na internet assim moleque! </div>
             </div>     
-            -->
-          </div> <!-- FIM COMENTÁRIOS -->
+            
+          </div>  
           <div id="comentar{{post.id}}" style="display:none;">
             <div id='gravar' class='d-flex p-2'>
               <div style='' class='p-2'>
@@ -59,11 +62,12 @@
                 onclick="comentar({{post.id}});"  class='item-menu' type='button'>&#x1F5E3;&nbsp;Enviar</a>
               </div>
             </div>
-          </div> <!-- FIM COMENTAR -->
-
-        </div> <!-- FIM CONTAINER DOS COMENTÁRIOS -->
-
+          </div> 
+          
+        </div> 
+        
       </div>
+      -->
       {% endif %}
     </div><!-- FIM POST -->
   {% endfor %}

@@ -88,7 +88,7 @@ function comentar(post_id){
         data: { comentario: comentario, post_id: post_id}
        })
 
-    //location.reload();
+    location.reload();
 
 
     
